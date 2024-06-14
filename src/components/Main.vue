@@ -14,7 +14,12 @@ export default{
 <template>
     <div class="limited">
         <section>
-            <h1 v-for="film in store.films">{{ film.title }}</h1>
+            <article v-for="(film,index) in store.films">
+                <h1>{{ index + 1 }}) {{film.title}}</h1>
+                <p>Titolo originale: {{ film.original_title }}</p>
+                <p>Lingua originale: {{ film.original_language }}</p>
+                <p>Voto: {{ film.vote_average }}</p>
+            </article>
         </section>
     </div>
 </template>
