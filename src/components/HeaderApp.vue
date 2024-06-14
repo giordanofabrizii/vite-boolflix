@@ -40,6 +40,7 @@ export default{
 
 header {
     background-color: black;
+    height: 4.5rem;
 
     div{
         @include flexRow;
