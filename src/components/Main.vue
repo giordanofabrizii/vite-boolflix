@@ -74,7 +74,7 @@ export default{
 @use '../styles/partials/mixins' as *;
 
 main {
-    background-color: lightblue;
+    background-color: black;
     height: calc(100vh - 4.5rem);
 
     .limited{
@@ -83,6 +83,10 @@ main {
         .films,
         .tvs{
             height: 50%;
+
+            h1{
+                color: white;
+            }
 
             .article-container{
                 @include flexRow;
@@ -93,18 +97,22 @@ main {
                     margin: 1rem;
                     display: flex;
                     align-items: center;
+                    box-shadow: 0 0 15px red;
+                    border-radius: 12px;
 
                     .poster{
                     height: 20rem;
+                    border-radius: 12px;
                     width: 13.5rem;
 
                         img{
                             width: 100%;
                         }    
-
                     }
 
                     .info{
+                    border-radius: 12px;
+
                         display: none;
                     }
 
@@ -177,6 +185,7 @@ main {
             h1{
                 text-align: center;
                 width: 100%;
+                color: white;
             }
         }
     }
