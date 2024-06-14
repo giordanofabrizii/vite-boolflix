@@ -12,7 +12,7 @@ export default{
 
 <template>
     <div class="limited">
-        <section>
+        <section v-if="store.films.length > 0">
             <article v-for="(film,index) in store.films">
                 <h1>{{ index + 1 }}) {{film.title}}</h1>
                 <p>Titolo originale: {{ film.original_title }}</p>
@@ -22,6 +22,9 @@ export default{
                 </p>
                 <p>Voto: {{ film.vote_average }}</p>
             </article>
+        </section>
+        <section v-else>
+            <h1>Cerca qualcosa per vedere i risultati</h1>
         </section>
     </div>
 </template>
