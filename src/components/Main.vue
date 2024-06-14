@@ -99,6 +99,8 @@ main {
                     align-items: center;
                     box-shadow: 0 0 15px red;
                     border-radius: 12px;
+                    position: relative;
+
 
                     .poster{
                     height: 20rem;
@@ -118,16 +120,16 @@ main {
 
                     &:hover{
                         .poster{
-                            display: none
+                            // display: none
+                            filter: blur(10px);
                         }
-
-                        .placeholder{
-                            object-fit: cover;
-                        }
-
                         .info{
                             display: block;
-                            background-color: black;
+                            background-color: rgba($color: #000000, $alpha: 0.4);
+                            // background-color: black;
+                            position: absolute;
+                            top: 0;
+                            z-index: 1;
                             color: white;
                             height: 20rem;
                             width: 13.5rem;
