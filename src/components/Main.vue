@@ -18,7 +18,8 @@ export default{
                     <h1>FILM</h1>
                     <div class="article-container">
                         <article v-for="(film,index) in store.films">
-                            <img class="poster" :src="'https://image.tmdb.org/t/p/' + 'w342/' + film.poster_path" alt="">
+                            <img class="poster" v-if="film.poster_path !== null" :src="'https://image.tmdb.org/t/p/' + 'w342/' + film.poster_path" alt="">
+                            <img v-else class="poster placeholder" src="../img/poster_placeholder.jpg" alt="placeholder image">
                             <div class="info">
                                 <h1>Titolo: <span>{{film.title}}</span></h1>
                                 <h2>Titolo originale: <span>{{ film.original_title }}</span></h2>
@@ -86,7 +87,7 @@ main {
             .article-container{
                 @include flexRow;
                 width: 100%;
-                overflow: scroll;
+                overflow-x: scroll;
 
                 article{
                     margin: 1rem;
