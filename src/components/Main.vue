@@ -23,7 +23,10 @@ export default{
                         <img class="flag" v-if="this.store.languageFlags.includes(film.original_language)" :src="'../src/img/' + film.original_language + '.png'" alt=""> 
                         <span v-else>{{ film.original_language }}</span>
                     </p>
-                    <p>Voto: {{ film.vote_average }}</p>
+                    <span>
+                        <i v-for="i in (Math.floor(film.vote_average / 2))" class="fa-solid fa-star"></i>
+                        <i v-for="i in (5 - Math.floor(film.vote_average / 2))" class="fa-regular fa-star"></i>
+                    </span>
                 </article>
             </section>
             <section v-if="store.series.length > 0">
@@ -36,7 +39,10 @@ export default{
                         <img class="flag" v-if="this.store.languageFlags.includes(tv.original_language)" :src="'../src/img/' + tv.original_language + '.png'" alt=""> 
                         <span v-else>{{ tv.original_language }}</span>
                     </p>
-                    <p>Voto: {{ tv.vote_average }}</p>
+                    <span>
+                        <i v-for="i in (Math.floor(tv.vote_average / 2))" class="fa-solid fa-star"></i>
+                        <i v-for="i in (5 - Math.floor(tv.vote_average / 2))" class="fa-regular fa-star"></i>
+                    </span>
                 </article>
             </section>
         </div>
