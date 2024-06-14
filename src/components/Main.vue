@@ -17,6 +17,7 @@ export default{
                 <h1>FILM</h1>
                 <article v-for="(film,index) in store.films">
                     <h1>{{ index + 1 }}) {{film.title}}</h1>
+                    <img class="poster" :src="'https://image.tmdb.org/t/p/' + 'w342/' + film.poster_path" alt="">
                     <p>Titolo originale: {{ film.original_title }}</p>
                     <p>Lingua originale: 
                         <img class="flag" v-if="this.store.languageFlags.includes(film.original_language)" :src="'../src/img/' + film.original_language + '.png'" alt=""> 
@@ -29,6 +30,7 @@ export default{
                 <h1>SERIE TV</h1>
                 <article v-for="(tv,index) in store.series">
                     <h1>{{ index + 1 }}) {{tv.name}}</h1>
+                    <img class="poster" :src="'https://image.tmdb.org/t/p/' + 'w342/' + tv.poster_path" alt="">
                     <p>Titolo originale: {{ tv.original_name }}</p>
                     <p>Lingua originale: 
                         <img class="flag" v-if="this.store.languageFlags.includes(tv.original_language)" :src="'../src/img/' + tv.original_language + '.png'" alt=""> 
