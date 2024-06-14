@@ -12,7 +12,7 @@ export default{
     methods: {
         search: function(){
             // console.log(this.store.url + this.store.api_key + '&query=' + this.searching)
-            axios.get(this.store.url + this.store.api_key + this.store.language + '&query=' + this.searching)
+            axios.get(this.store.url + this.store.apiKey + this.store.language + '&query=' + this.searching)
             .then(response => {
                 store.films = response.data.results
             })
