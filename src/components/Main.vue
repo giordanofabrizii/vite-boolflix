@@ -32,7 +32,7 @@ export default{
                                     <i v-for="i in (5 - Math.floor(film.vote_average / 2))" class="fa-regular fa-star"></i>
                                 </div>
                                 <div>
-                                    <p class="overview">Overview: <span>{{ film.overview }}</span></p>
+                                    <p class="overview" v-if="film.overview.length > 0">Overview: <span>{{ film.overview }}</span></p>
                                 </div>
                             </div>
                         </article>
@@ -56,7 +56,7 @@ export default{
                                     <i v-for="i in (5 - Math.floor(tv.vote_average / 2))" class="fa-regular fa-star"></i>
                                 </div>
                                 <div>
-                                    <p class="overview">Overview: <span>{{ tv.overview }}</span></p>
+                                    <p class="overview" v-if="tv.overview.length > 0">Overview: <span>{{ tv.overview }}</span></p>
                                 </div>
                             </div>
                         </article>
