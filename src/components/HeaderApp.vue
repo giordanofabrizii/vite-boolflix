@@ -20,6 +20,16 @@ export default{
                 store.series = response.data.results
             })
         }
+    },
+    created(){
+        axios.get('https://api.themoviedb.org/3/genre/movie/list?language=it&' + this.store.apiKey)
+        .then(response => {
+            store.genreList = response.data.genres;
+        })
+        axios.get('https://api.themoviedb.org/3/genre/tv/list?language=it&' + this.store.apiKey)
+        .then(response => {
+            store.genreList.concat(response.data.genres);
+        })
     }
 }
 </script>

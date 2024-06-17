@@ -7,6 +7,13 @@ export default{
             store,
         }
     },
+    methods:{
+        getGenre: function(id){
+            let genre = this.store.genreList.find(item => item.id === id);
+            console.log('cercato')
+            return genre ? genre.name : null;
+        }
+    },
     props:{
         element: Object,
     }
@@ -24,14 +31,14 @@ export default{
         <div class="info">
 
             <!-- Title and original title -->
-            <div v-if="this.element.title">
+            <section v-if="this.element.title">
                 <h1>Titolo: <span>{{this.element.title}}</span></h1>
                 <h2 v-if="this.element.title != this.element.original_title">Titolo originale: <span>{{ this.element.original_title }}</span></h2>
-            </div>
-            <div v-else-if="this.element.name">
+            </section>
+            <section v-else-if="this.element.name">
                 <h1>Titolo: <span>{{this.element.name}}</span></h1>
                 <h2 v-if="this.element.name != this.element.original_name">Titolo originale: <span>{{ this.element.original_name }}</span></h2>
-            </div>
+            </section>
 
             <!-- # Language -->
             <h3>Lingua originale: 
@@ -41,21 +48,30 @@ export default{
             </h3>
 
             <!-- > Stars -->
-            <div class="ratings">
+            <section class="ratings">
                 <i v-for="i in (Math.floor(this.element.vote_average / 2))" class="fa-solid fa-star yellow"></i>
                 <i v-for="i in (5 - Math.floor(this.element.vote_average / 2))" class="fa-regular fa-star"></i>
-            </div>
+            </section>
+
+            <!-- ! Genres -->
+            <section class="genres">
+                <ul>
+                    <li v-for="(genre, index) in this.element.genre_ids" v-show="index < 5">{{ this.getGenre(genre)}}</li> 
+                </ul>
+            </section>
 
             <!-- * Overview -->
-            <div>
+            <section>
                 <p class="overview" v-if="this.element.overview.length > 0">Overview: <span>{{ this.element.overview }}</span></p>
-            </div>
+            </section>
         </div>
     </article>
 </template>
 
 <style lang="scss" scoped>
+@use '../styles/general.scss' as *;
 @use '../styles/partials/flags' as *;
+@use '../styles/partials/mixins' as *;
 
     article{
         margin: 1rem;
@@ -128,12 +144,33 @@ export default{
                     }
                 }
 
+                .genres {
+                    max-width: 100%;
+                    ul{
+                        max-width: 100%;
+                        @include flexRow;
+                        flex-wrap: wrap;
+                        li:not(:last-child)::after{
+                            content: ',';
+                            margin-right: .3rem;
+                        }
+                        li:first-child{
+                            &::before{
+                            content: 'Genres:';
+                            display: inline;
+                            font-weight: 600;
+                            margin-right: .3rem;
+                    }
+                        }
+                    }
+                }
+
                 p{
                     font-weight: 600;
                 }
 
                 .overview{
-                    height: 4.5rem;
+                    height: 3.5rem;
                     overflow: hidden;
                     text-overflow: ellipsis;
                     span{

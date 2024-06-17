@@ -9,4 +9,5 @@ export const store = reactive ({
     series:[],
     languageFlags:['de','en','it','fr'],
     searching : '',
+    genreList:[],
 })
