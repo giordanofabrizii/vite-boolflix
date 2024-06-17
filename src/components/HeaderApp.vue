@@ -10,7 +10,6 @@ export default{
     },
     methods: {
         search: function(){
-            // console.log(this.store.url + this.store.api_key + '&query=' + this.searching)
             axios.get(this.store.filmUrl + this.store.apiKey + this.store.language + '&query=' + this.store.searching)
             .then(response => {
                 store.films = response.data.results

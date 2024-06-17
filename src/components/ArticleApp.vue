@@ -42,8 +42,6 @@ export default{
 
             <!-- # Language -->
             <h3>Lingua originale: 
-                <!-- <img class="flag" v-if="this.store.languageFlags.includes(this.element.original_language)" :src="'../src/img/' + this.element.original_language + '.png'" alt=""> 
-                <span v-else>{{ this.element.original_language }}</span> -->
                 <img class="flag lang-icon" :class="'lang-icon-' + this.element.original_language" src="" alt="">
             </h3>
 
@@ -70,8 +68,8 @@ export default{
 
 <style lang="scss" scoped>
 @use '../styles/general.scss' as *;
-@use '../styles/partials/flags' as *;
 @use '../styles/partials/mixins' as *;
+@use '../../node_modules/@textabledev/langs-flags-list/lang-flags.css' as *;
 
     article{
         margin: 1rem;
@@ -100,13 +98,11 @@ export default{
 
         &:hover{
             .poster{
-                // display: none
                 filter: blur(10px);
             }
             .info{
                 display: block;
                 background-color: rgba($color: #000000, $alpha: 0.4);
-                // background-color: black;
                 position: absolute;
                 top: 0;
                 z-index: 1;
