@@ -35,8 +35,9 @@ export default{
 
             <!-- # Language -->
             <h3>Lingua originale: 
-                <img class="flag" v-if="this.store.languageFlags.includes(this.element.original_language)" :src="'../src/img/' + this.element.original_language + '.png'" alt=""> 
-                <span v-else>{{ this.element.original_language }}</span>
+                <!-- <img class="flag" v-if="this.store.languageFlags.includes(this.element.original_language)" :src="'../src/img/' + this.element.original_language + '.png'" alt=""> 
+                <span v-else>{{ this.element.original_language }}</span> -->
+                <img class="flag lang-icon" :class="'lang-icon-' + this.element.original_language" src="" alt="">
             </h3>
 
             <!-- > Stars -->
@@ -54,6 +55,8 @@ export default{
 </template>
 
 <style lang="scss" scoped>
+@use '../styles/partials/flags' as *;
+
     article{
         margin: 1rem;
         display: flex;
@@ -109,9 +112,12 @@ export default{
                 h3{
                     font-size: 1rem;
                     .flag{
-                        width: 2rem;
                         vertical-align: middle
                     }
+                }
+
+                .lang-icon {
+                    background-image: url(../img/lang-flags.png);
                 }
 
                 .ratings{
