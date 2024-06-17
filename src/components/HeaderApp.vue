@@ -6,17 +6,16 @@ export default{
     data() {
         return{
             store,
-            searching: '',
         }
     },
     methods: {
         search: function(){
             // console.log(this.store.url + this.store.api_key + '&query=' + this.searching)
-            axios.get(this.store.filmUrl + this.store.apiKey + this.store.language + '&query=' + this.searching)
+            axios.get(this.store.filmUrl + this.store.apiKey + this.store.language + '&query=' + this.store.searching)
             .then(response => {
                 store.films = response.data.results
             })
-            axios.get(this.store.seriesUrl + this.store.apiKey + this.store.language + '&query=' + this.searching)
+            axios.get(this.store.seriesUrl + this.store.apiKey + this.store.language + '&query=' + this.store.searching)
             .then(response => {
                 store.series = response.data.results
             })
@@ -29,7 +28,7 @@ export default{
     <header>
         <div class="limited">
             <h1>Boolflix</h1>
-            <input type="text" placeholder="Comincia a cercare" @keyup="search()" v-model="searching">
+            <input type="text" placeholder="Comincia a cercare" @keyup="search()" v-model="store.searching">
         </div>
     </header>
 </template>

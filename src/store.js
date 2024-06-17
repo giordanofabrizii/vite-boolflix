@@ -8,4 +8,5 @@ export const store = reactive ({
     films:[],
     series:[],
     languageFlags:['de','en','it','fr'],
+    searching : '',
 })
