@@ -22,7 +22,7 @@ export default{
                             <img v-else class="poster placeholder" src="../img/poster_placeholder.jpg" alt="placeholder image">
                             <div class="info">
                                 <h1>Titolo: <span>{{film.title}}</span></h1>
-                                <h2>Titolo originale: <span>{{ film.original_title }}</span></h2>
+                                <h2 v-if="film.title != film.original_title">Titolo originale: <span>{{ film.original_title }}</span></h2>
                                 <h3>Lingua originale: 
                                     <img class="flag" v-if="this.store.languageFlags.includes(film.original_language)" :src="'../src/img/' + film.original_language + '.png'" alt=""> 
                                     <span v-else>{{ film.original_language }}</span>
@@ -46,7 +46,7 @@ export default{
                             <img v-else class="poster placeholder" src="../img/poster_placeholder.jpg" alt="placeholder image">
                             <div class="info">
                                 <h1>Titolo: <span>{{tv.name}}</span></h1>
-                                <h2>Titolo originale: <span>{{ tv.original_name }}</span></h2>
+                                <h2 v-if="tv.title != tv.original_title">Titolo originale: <span>{{ tv.original_name }}</span></h2>
                                 <h3>Lingua originale: 
                                     <img class="flag" v-if="this.store.languageFlags.includes(tv.original_language)" :src="'../src/img/' + tv.original_language + '.png'" alt=""> 
                                     <span v-else>{{ tv.original_language }}</span>
