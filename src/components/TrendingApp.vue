@@ -10,6 +10,7 @@ export default{
             store,
             trending:[],
             topRated:[],
+            upcoming:[],
         }
     },
     components:{
@@ -23,6 +24,10 @@ export default{
         axios.get('https://api.themoviedb.org/3/movie/top_rated?' + this.store.apiKey + this.store.language)
         .then(response => {
             this.topRated = response.data.results;
+        })
+        axios.get('https://api.themoviedb.org/3/movie/upcoming?' + this.store.apiKey + this.store.language)
+        .then(response => {
+            this.upcoming = response.data.results
         })
     }
 }
@@ -41,17 +46,23 @@ export default{
             <ArticleApp v-for="film in topRated" :element="film"/>
         </div>
     </section>
+    <section>
+        <h1>Upcoming:</h1>
+        <div class="article-container">
+            <ArticleApp v-for="film in upcoming" :element="film"/>
+        </div>
+    </section>
 </template>
 
 <style lang="scss" scoped>
 @use '../styles/partials/mixins' as *;
 
     section{
-        height: 50%;
+        height: 100%;
+        margin: 1rem 0;
 
         h1{
             color: white;
-            font-size: 1.5rem
         }
 
         .article-container{
@@ -60,4 +71,5 @@ export default{
             overflow-x: scroll;
         }
     }
+
 </style>

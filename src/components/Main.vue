@@ -46,16 +46,17 @@ export default{
 <style lang="scss" scoped>
 @use '../styles/partials/mixins' as *;
 
-main {
+main{
     background-color: black;
     height: calc(100vh - 4.5rem);
+    overflow: scroll;
 
     .limited{
         height: 100%;
     
-        .films,
-        .tvs{
+        section{
             height: 50%;
+            margin: 1rem 0;
 
             h1{
                 color: white;
