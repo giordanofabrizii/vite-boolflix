@@ -1,6 +1,7 @@
 <script>
 import {store} from '../store.js';
-import ArticleApp from './ArticleApp.vue'
+import ArticleApp from './ArticleApp.vue';
+import TrendingApp from './TrendingApp.vue';
 
 export default{
     data() {
@@ -10,6 +11,7 @@ export default{
     },
     components:{
         ArticleApp,
+        TrendingApp,
     }
 }
 </script>
@@ -32,7 +34,7 @@ export default{
                 </section>
             </div>
             <section class="unsearched" v-else-if="store.searching.length < 1">
-                <h1>Cerca qualcosa per vedere i risultati</h1>
+                <TrendingApp/>
             </section>
             <section class="unfounded" v-else>
                 <h1>La ricerca non ha prodotto risultati, ci dispiace</h1>
@@ -66,7 +68,6 @@ main {
             }
         }
 
-        .unsearched,
         .unfounded{
         @include flexRow;
         height: 100%;
